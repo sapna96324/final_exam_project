@@ -1,0 +1,314 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:sans-serif}
+.wrap{padding:.5rem 0 1.5rem}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px}
+.nf{background:#E50914;border-radius:8px;padding:6px 16px;display:flex;flex-direction:column;gap:0}
+.nf-t{font-size:20px;font-weight:900;color:#fff;letter-spacing:3px;line-height:1}
+.nf-s{font-size:9px;color:#ffcdd2;letter-spacing:1px;font-weight:600}
+.htitle{font-size:14px;font-weight:700;color:var(--color-text-primary)}
+.hsub{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:.8rem}
+.leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary)}
+.ld{width:9px;height:9px;border-radius:50%}
+.info{margin-top:.8rem;background:var(--color-background-secondary);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;min-height:48px}
+.idot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.ititle{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.idesc{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+</style>
+<div class="wrap">
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="nf"><div class="nf-t">NETFLIX</div><div class="nf-s">DEVSECOPS PIPELINE</div></div>
+    <div><div class="htitle">Hub &amp; Spoke Architecture</div><div class="hsub">Jenkins orchestrates · Click any node</div></div>
+  </div>
+</div>
+<div class="legend">
+  <div class="leg"><div class="ld" style="background:#1864AB"></div>Source &amp; CI</div>
+  <div class="leg"><div class="ld" style="background:#6741D9"></div>Security</div>
+  <div class="leg"><div class="ld" style="background:#2B8A3E"></div>Build &amp; Image</div>
+  <div class="leg"><div class="ld" style="background:#D9480F"></div>Deploy</div>
+  <div class="leg"><div class="ld" style="background:#0B7285"></div>Monitor &amp; Notify</div>
+  <div class="leg"><div class="ld" style="background:#E50914"></div>Feedback</div>
+</div>
+
+<svg viewBox="0 0 800 820" width="100%" role="img">
+<title>Netflix DevSecOps Hub and Spoke</title>
+<desc>Jenkins hub at centre with 11 satellite nodes placed in a clean non-overlapping layout, connected by coloured dashed arrows.</desc>
+<defs>
+  <marker id="mb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 2L8 5L1 8" fill="none" stroke="#1864AB" stroke-width="2" stroke-linecap="round"/></marker>
+  <marker id="mp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 2L8 5L1 8" fill="none" stroke="#6741D9" stroke-width="2" stroke-linecap="round"/></marker>
+  <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 2L8 5L1 8" fill="none" stroke="#2B8A3E" stroke-width="2" stroke-linecap="round"/></marker>
+  <marker id="ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 2L8 5L1 8" fill="none" stroke="#D9480F" stroke-width="2" stroke-linecap="round"/></marker>
+  <marker id="mt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 2L8 5L1 8" fill="none" stroke="#0B7285" stroke-width="2" stroke-linecap="round"/></marker>
+  <marker id="mr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 2L8 5L1 8" fill="none" stroke="#E50914" stroke-width="2" stroke-linecap="round"/></marker>
+</defs>
+
+<!-- ═══════════════════════════════════════════════════
+     LAYOUT PLAN
+     Hub centre: 400, 410
+     Hub radius: 72
+
+     TOP TIER (y≈100) — 3 nodes spaced 200px apart:
+       Deploy K8s:   x=110  y=90  → centre 182,119
+       GitHub:       x=328  y=90  → centre 400,119
+       Monitoring:   x=546  y=90  → centre 618,119
+
+     MID-LEFT (x≈60):
+       DevOps Loop:  x=28   y=230 → centre 100,259
+       SonarQube:    x=28   y=360 → centre 100,389
+
+     MID-RIGHT (x≈640):
+       Deploy Cont:  x=648  y=230 → centre 720,259
+       NPM Dep:      x=648  y=360 → centre 720,389
+
+     BOTTOM TIER (y≈560) — 3 nodes spaced 200px apart:
+       OWASP:        x=110  y=560 → centre 182,589
+       Trivy:        x=328  y=560 → centre 400,589
+       Docker Build: x=546  y=560 → centre 618,589
+
+     BOTTOM-RIGHT EXTRA:
+       Notify/Mail:  x=648  y=490 → centre 720,519
+
+     Node size: w=144 h=52 rx=10
+     ═══════════════════════════════════════════════════ -->
+
+<!-- ─── ARROWS ─── -->
+<!-- GitHub top-centre: hub top (400,338) → node bottom (400,142) -->
+<line x1="400" y1="338" x2="400" y2="145" stroke="#1864AB" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mb)"/>
+
+<!-- DevOps mid-left: hub left (328,410) → node right (172,259) -->
+<line x1="330" y1="385" x2="175" y2="272" stroke="#1864AB" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mb)"/>
+
+<!-- SonarQube mid-left-low: hub left (328,425) → node right (172,389) -->
+<line x1="328" y1="425" x2="172" y2="389" stroke="#6741D9" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mp)"/>
+
+<!-- OWASP bottom-left: hub bottom-left (355,478) → node top (182,562) -->
+<line x1="360" y1="476" x2="220" y2="560" stroke="#6741D9" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mp)"/>
+
+<!-- Trivy bottom-centre: hub bottom (400,482) → node top (400,562) -->
+<line x1="400" y1="482" x2="400" y2="562" stroke="#6741D9" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mp)"/>
+
+<!-- Docker Build bottom-right: hub bottom-right (440,476) → node top (580,562) -->
+<line x1="440" y1="476" x2="578" y2="560" stroke="#2B8A3E" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mg)"/>
+
+<!-- Deploy Container mid-right: hub right (472,395) → node left (648,259) -->
+<line x1="472" y1="390" x2="646" y2="272" stroke="#D9480F" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#ma)"/>
+
+<!-- NPM Dep mid-right-low: hub right (472,425) → node left (648,389) -->
+<line x1="472" y1="428" x2="648" y2="389" stroke="#6741D9" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mp)"/>
+
+<!-- Notify mid-right-low2: hub right (472,445) → node left (648,519) -->
+<line x1="472" y1="448" x2="648" y2="509" stroke="#0B7285" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mt)"/>
+
+<!-- Deploy K8s top-left: hub top-left (360,340) → node bottom-right (254,142) -->
+<line x1="357" y1="342" x2="255" y2="142" stroke="#D9480F" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#ma)"/>
+
+<!-- Monitoring top-right: hub top-right (440,340) → node bottom-left (547,142) -->
+<line x1="443" y1="342" x2="547" y2="142" stroke="#0B7285" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mt)"/>
+
+<!-- FEEDBACK arc: Monitoring top-right → Jenkins hub (right side outer curve) -->
+<path d="M762 120 Q800 410 762 700 Q740 760 618 760 Q500 760 472 700 Q450 660 440 650 Q430 648 430 640" fill="none" stroke="#E50914" stroke-width="2" stroke-dasharray="7 4" marker-end="url(#mr)"/>
+<text x="790" y="415" text-anchor="middle" font-size="10" fill="#E50914" font-family="sans-serif" transform="rotate(90 790 415)">feedback loop</text>
+
+<!-- ─── JENKINS HUB ─── -->
+<circle cx="400" cy="410" r="76" fill="#fff8f8" stroke="#E50914" stroke-width="2.5"/>
+<circle cx="400" cy="410" r="70" fill="#fff" stroke="#E50914" stroke-width="1"/>
+<!-- hat brim -->
+<ellipse cx="400" cy="368" rx="28" ry="6" fill="#2c2c2c"/>
+<!-- hat body -->
+<rect x="374" y="342" width="52" height="28" rx="4" fill="#1a1a1a"/>
+<!-- head -->
+<circle cx="400" cy="388" rx="26" ry="26" fill="#FFCCBC"/>
+<ellipse cx="400" cy="388" rx="26" ry="26" fill="#FFCCBC"/>
+<!-- hair sides -->
+<ellipse cx="374" cy="390" rx="6" ry="9" fill="#4E342E"/>
+<ellipse cx="426" cy="390" rx="6" ry="9" fill="#4E342E"/>
+<!-- ears -->
+<ellipse cx="374" cy="390" rx="5" ry="6" fill="#FFCCBC"/>
+<ellipse cx="426" cy="390" rx="5" ry="6" fill="#FFCCBC"/>
+<!-- spectacles -->
+<rect x="384" y="382" width="11" height="8" rx="3" fill="none" stroke="#555" stroke-width="1.2"/>
+<rect x="405" y="382" width="11" height="8" rx="3" fill="none" stroke="#555" stroke-width="1.2"/>
+<line x1="395" y1="386" x2="405" y2="386" stroke="#555" stroke-width="1"/>
+<!-- eyes -->
+<circle cx="390" cy="386" r="2" fill="#333"/>
+<circle cx="411" cy="386" r="2" fill="#333"/>
+<!-- moustache -->
+<path d="M389 396 Q393 400 400 398 Q407 400 411 396" fill="none" stroke="#4E342E" stroke-width="1.5" stroke-linecap="round"/>
+<!-- shirt collar + bow tie -->
+<path d="M385 414 Q400 425 415 414" fill="none" stroke="#555" stroke-width="1"/>
+<polygon points="392,416 398,420 392,424" fill="#E50914"/>
+<polygon points="408,416 402,420 408,424" fill="#E50914"/>
+<rect x="398" y="418" width="4" height="4" rx="1" fill="#C62828"/>
+<!-- label -->
+<text x="400" y="448" text-anchor="middle" font-size="14" font-weight="800" fill="#C62828" font-family="sans-serif">Jenkins</text>
+<text x="400" y="464" text-anchor="middle" font-size="10" fill="#888" font-family="sans-serif">CI/CD Orchestrator</text>
+
+<!-- ─── NODES ─── -->
+
+<!-- TOP TIER — 3 nodes well separated -->
+
+<!-- Deploy K8s  cx=182 cy=119  -->
+<g style="cursor:pointer" onclick="show(7)">
+  <rect x="110" y="93" width="144" height="52" rx="10" fill="#FFF4E6" stroke="#D9480F" stroke-width="2"/>
+  <!-- K8s wheel icon hint -->
+  <circle cx="133" cy="119" r="10" fill="#326CE5" opacity=".15"/>
+  <circle cx="133" cy="119" r="4" fill="#326CE5" opacity=".5"/>
+  <text x="182" y="112" text-anchor="middle" font-size="12" font-weight="800" fill="#7D2D00" font-family="sans-serif">Deploy on K8s</text>
+  <text x="182" y="129" text-anchor="middle" font-size="9.5" fill="#D9480F" font-family="sans-serif">Helm · ArgoCD · EKS</text>
+</g>
+
+<!-- GitHub  cx=400 cy=119 -->
+<g style="cursor:pointer" onclick="show(0)">
+  <rect x="328" y="93" width="144" height="52" rx="10" fill="#E7F5FF" stroke="#1864AB" stroke-width="2"/>
+  <circle cx="351" cy="119" r="10" fill="#1864AB" opacity=".15"/>
+  <circle cx="351" cy="119" r="4" fill="#1864AB" opacity=".5"/>
+  <text x="400" y="112" text-anchor="middle" font-size="12" font-weight="800" fill="#1864AB" font-family="sans-serif">GitHub</text>
+  <text x="400" y="129" text-anchor="middle" font-size="9.5" fill="#4C6EF5" font-family="sans-serif">Source · Webhooks · PRs</text>
+</g>
+
+<!-- Monitoring  cx=618 cy=119 -->
+<g style="cursor:pointer" onclick="show(9)">
+  <rect x="546" y="93" width="144" height="52" rx="10" fill="#E3FAFC" stroke="#0B7285" stroke-width="2"/>
+  <circle cx="569" cy="119" r="10" fill="#0B7285" opacity=".15"/>
+  <circle cx="569" cy="119" r="4" fill="#0B7285" opacity=".5"/>
+  <text x="618" y="112" text-anchor="middle" font-size="12" font-weight="800" fill="#0B6E7A" font-family="sans-serif">Monitoring</text>
+  <text x="618" y="129" text-anchor="middle" font-size="9.5" fill="#0C8599" font-family="sans-serif">Prometheus · Grafana · ELK</text>
+</g>
+
+<!-- MID LEFT -->
+
+<!-- DevOps Loop  cx=100 cy=259 -->
+<g style="cursor:pointer" onclick="show(1)">
+  <rect x="28" y="233" width="144" height="52" rx="10" fill="#E7F5FF" stroke="#1864AB" stroke-width="2"/>
+  <!-- infinity hint -->
+  <text x="52" y="263" font-size="16" fill="#1864AB" opacity=".5" font-family="sans-serif">∞</text>
+  <text x="100" y="252" text-anchor="middle" font-size="12" font-weight="800" fill="#1864AB" font-family="sans-serif">DevOps Loop</text>
+  <text x="100" y="269" text-anchor="middle" font-size="9.5" fill="#4C6EF5" font-family="sans-serif">Plan·Code·Build·Release</text>
+</g>
+
+<!-- SonarQube  cx=100 cy=389 -->
+<g style="cursor:pointer" onclick="show(2)">
+  <rect x="28" y="363" width="144" height="52" rx="10" fill="#F3F0FF" stroke="#6741D9" stroke-width="2"/>
+  <circle cx="52" cy="389" r="10" fill="#6741D9" opacity=".15"/>
+  <text x="58" y="393" text-anchor="middle" font-size="11" fill="#6741D9" font-family="sans-serif" font-weight="700">S</text>
+  <text x="100" y="382" text-anchor="middle" font-size="12" font-weight="800" fill="#5F3DC4" font-family="sans-serif">SonarQube</text>
+  <text x="100" y="399" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">SAST · Quality Gate</text>
+</g>
+
+<!-- MID RIGHT -->
+
+<!-- Deploy Container  cx=720 cy=259 -->
+<g style="cursor:pointer" onclick="show(8)">
+  <rect x="648" y="233" width="144" height="52" rx="10" fill="#FFF4E6" stroke="#D9480F" stroke-width="2"/>
+  <circle cx="672" cy="259" r="10" fill="#D9480F" opacity=".15"/>
+  <circle cx="672" cy="259" r="4" fill="#D9480F" opacity=".4"/>
+  <text x="720" y="252" text-anchor="middle" font-size="12" font-weight="800" fill="#7D2D00" font-family="sans-serif">Deploy Container</text>
+  <text x="720" y="269" text-anchor="middle" font-size="9.5" fill="#D9480F" font-family="sans-serif">Docker Compose · ECS</text>
+</g>
+
+<!-- NPM Dependency  cx=720 cy=389 -->
+<g style="cursor:pointer" onclick="show(3)">
+  <rect x="648" y="363" width="144" height="52" rx="10" fill="#F3F0FF" stroke="#6741D9" stroke-width="2"/>
+  <circle cx="672" cy="389" r="10" fill="#6741D9" opacity=".15"/>
+  <text x="678" y="393" text-anchor="middle" font-size="10" fill="#6741D9" font-family="sans-serif" font-weight="800">npm</text>
+  <text x="720" y="382" text-anchor="middle" font-size="12" font-weight="800" fill="#5F3DC4" font-family="sans-serif">NPM Dep Check</text>
+  <text x="720" y="399" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">SCA · SBOM · Audit</text>
+</g>
+
+<!-- Notify/Mail  cx=720 cy=519 -->
+<g style="cursor:pointer" onclick="show(10)">
+  <rect x="648" y="493" width="144" height="52" rx="10" fill="#E3FAFC" stroke="#0B7285" stroke-width="2"/>
+  <circle cx="672" cy="519" r="10" fill="#0B7285" opacity=".15"/>
+  <text x="678" y="523" text-anchor="middle" font-size="12" fill="#0B7285" font-family="sans-serif">✉</text>
+  <text x="720" y="512" text-anchor="middle" font-size="12" font-weight="800" fill="#0B6E7A" font-family="sans-serif">Notify / Mail</text>
+  <text x="720" y="529" text-anchor="middle" font-size="9.5" fill="#0C8599" font-family="sans-serif">Slack · Email · PagerDuty</text>
+</g>
+
+<!-- BOTTOM TIER -->
+
+<!-- OWASP  cx=182 cy=589 -->
+<g style="cursor:pointer" onclick="show(4)">
+  <rect x="110" y="563" width="144" height="52" rx="10" fill="#F3F0FF" stroke="#6741D9" stroke-width="2"/>
+  <circle cx="134" cy="589" r="10" fill="#6741D9" opacity=".15"/>
+  <text x="140" y="593" text-anchor="middle" font-size="9" fill="#6741D9" font-family="sans-serif" font-weight="800">OW</text>
+  <text x="182" y="582" text-anchor="middle" font-size="12" font-weight="800" fill="#5F3DC4" font-family="sans-serif">OWASP</text>
+  <text x="182" y="599" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">Dep-Check · ZAP DAST</text>
+</g>
+
+<!-- Trivy File Scan  cx=400 cy=589 -->
+<g style="cursor:pointer" onclick="show(5)">
+  <rect x="328" y="563" width="144" height="52" rx="10" fill="#F3F0FF" stroke="#6741D9" stroke-width="2"/>
+  <circle cx="352" cy="589" r="10" fill="#6741D9" opacity=".15"/>
+  <text x="358" y="593" text-anchor="middle" font-size="10" fill="#6741D9" font-family="sans-serif" font-weight="800">TV</text>
+  <text x="400" y="582" text-anchor="middle" font-size="12" font-weight="800" fill="#5F3DC4" font-family="sans-serif">Trivy File Scan</text>
+  <text x="400" y="599" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">FS · IaC · Secrets · CVE</text>
+</g>
+
+<!-- Docker Build  cx=618 cy=589 -->
+<g style="cursor:pointer" onclick="show(6)">
+  <rect x="546" y="563" width="144" height="52" rx="10" fill="#EBFBEE" stroke="#2B8A3E" stroke-width="2"/>
+  <circle cx="570" cy="589" r="10" fill="#2B8A3E" opacity=".15"/>
+  <circle cx="570" cy="589" r="4" fill="#2B8A3E" opacity=".4"/>
+  <text x="618" y="582" text-anchor="middle" font-size="12" font-weight="800" fill="#1B5E20" font-family="sans-serif">Docker Build</text>
+  <text x="618" y="599" text-anchor="middle" font-size="9.5" fill="#2B8A3E" font-family="sans-serif">Multi-stage · Sign · Push</text>
+</g>
+
+<!-- IMAGE SCAN  cx=400 cy=700 — extra bottom node -->
+<g style="cursor:pointer" onclick="show(11)">
+  <rect x="328" y="672" width="144" height="52" rx="10" fill="#EBFBEE" stroke="#2B8A3E" stroke-width="2"/>
+  <circle cx="352" cy="698" r="10" fill="#2B8A3E" opacity=".15"/>
+  <text x="358" y="702" text-anchor="middle" font-size="10" fill="#2B8A3E" font-family="sans-serif" font-weight="800">IS</text>
+  <text x="400" y="691" text-anchor="middle" font-size="12" font-weight="800" fill="#1B5E20" font-family="sans-serif">Image Scan</text>
+  <text x="400" y="708" text-anchor="middle" font-size="9.5" fill="#2B8A3E" font-family="sans-serif">Trivy · Docker Scout · SBOM</text>
+</g>
+<!-- Arrow to Image Scan from Docker Build -->
+<line x1="618" y1="615" x2="472" y2="672" stroke="#2B8A3E" stroke-width="1.8" stroke-dasharray="7 4" marker-end="url(#mg)"/>
+<!-- Arrow from hub to Image Scan (via Trivy/bottom path) -->
+<line x1="400" y1="615" x2="400" y2="672" stroke="#2B8A3E" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#mg)"/>
+
+<!-- ─── CATEGORY LANE LABELS (side banners) ─── -->
+<!-- Left side label -->
+<rect x="4" y="225" width="18" height="230" rx="4" fill="#f3f0ff"/>
+<text x="13" y="340" text-anchor="middle" font-size="10" fill="#6741D9" font-family="sans-serif" font-weight="700" transform="rotate(-90 13 340)">Security &amp; Source</text>
+
+<!-- Right side label -->
+<rect x="778" y="225" width="18" height="310" rx="4" fill="#fff4e6"/>
+<text x="787" y="380" text-anchor="middle" font-size="10" fill="#D9480F" font-family="sans-serif" font-weight="700" transform="rotate(90 787 380)">Deploy &amp; Notify</text>
+
+<!-- Bottom label -->
+<rect x="100" y="658" width="620" height="5" rx="2" fill="#ebfbee"/>
+<text x="400" y="660" text-anchor="middle" font-size="9" fill="#2B8A3E" font-family="sans-serif" font-weight="700">Build · Scan · Push Layer</text>
+
+</svg>
+
+<div class="info" id="infobar">
+  <div class="idot" id="idot" style="background:#aaa"></div>
+  <div><div class="ititle" id="ititle">Click any node to inspect</div><div class="idesc" id="idesc">Each node shows its role and tools in the pipeline</div></div>
+</div>
+</div>
+
+<script>
+const D=[
+  {c:"#1864AB",t:"GitHub — Source Control",d:"Hosts the Netflix clone repo. Branch protection, signed commits, PR reviews, and webhook triggers fire Jenkins on every push or merge to main."},
+  {c:"#1864AB",t:"DevOps Loop — CI/CD Cycle",d:"Infinity loop of Plan→Code→Build→Test→Release→Deploy→Operate→Monitor. Jenkins drives this autonomously on every commit via Jenkinsfile."},
+  {c:"#6741D9",t:"SonarQube — SAST & Quality Gate",d:"Scans source code for SQL injection, XSS, code smells and bugs. Pipeline hard-fails if Quality Gate is not GREEN. SARIF uploaded to GitHub Security tab."},
+  {c:"#6741D9",t:"NPM Dependency Check — SCA",d:"SCA audits all npm/Maven packages against NVD CVE database. Generates CycloneDX SBOM every build. Fails on CVSS ≥ 7.0 (High/Critical)."},
+  {c:"#6741D9",t:"OWASP — Dep-Check & ZAP DAST",d:"OWASP Dependency-Check finds CVEs in libraries. ZAP runs Dynamic Application Security Testing against the live app to find runtime injection and auth vulnerabilities."},
+  {c:"#6741D9",t:"Trivy File Scan — FS / IaC / Secrets",d:"Trivy scans filesystem, Dockerfiles, Helm charts and Terraform plans for OS CVEs, misconfigurations, hardcoded secrets and IaC policy violations."},
+  {c:"#2B8A3E",t:"Docker Build — Multi-stage Image",d:"Multi-stage Dockerfile produces a minimal distroless image. BuildKit cache speeds builds. Image signed with Cosign and pushed to Docker Hub / ECR with immutable SHA tag."},
+  {c:"#D9480F",t:"Deploy on K8s — Helm & ArgoCD",d:"Helm chart packages the app. ArgoCD GitOps engine reconciles desired state from Git to EKS cluster. Supports Blue/Green and Canary rollouts with auto-rollback on error rate breach."},
+  {c:"#D9480F",t:"Deploy Container — Docker / ECS",d:"Deploys signed image to Docker Compose (dev/staging) or AWS ECS (pre-prod). Secrets injected via AWS Secrets Manager — never baked into the image."},
+  {c:"#0B7285",t:"Monitoring — Observability Stack",d:"Prometheus scrapes metrics, Grafana visualises SLOs and security dashboards, ELK centralises all logs including K8s audit logs and WAF events. Alertmanager routes on-call pages."},
+  {c:"#0B7285",t:"Notify / Mail — Alerts & Comms",d:"Jenkins notifies Slack #devsecops-builds and #security-alerts on every build result. PagerDuty escalates P1 incidents. Post-deploy email reports generated automatically."},
+  {c:"#2B8A3E",t:"Image Scan — Trivy & Docker Scout",d:"Scans the final built Docker image for OS package CVEs and app-layer vulnerabilities. Docker Scout generates SBOM attached to the OCI image digest for supply chain auditing."},
+];
+function show(i){
+  const n=D[i];
+  document.getElementById('idot').style.background=n.c;
+  document.getElementById('ititle').innerHTML=n.t;
+  document.getElementById('idesc').innerHTML=n.d;
+}
+</script>

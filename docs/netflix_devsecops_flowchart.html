@@ -1,0 +1,414 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:sans-serif}
+.wrap{padding:.5rem 0 2rem;background:transparent}
+
+/* header */
+.hdr{display:flex;align-items:center;gap:12px;margin-bottom:1.2rem}
+.nfbadge{background:#E50914;border-radius:8px;padding:7px 16px}
+.nfbadge span{font-size:18px;font-weight:900;color:#fff;letter-spacing:3px}
+.hdr-text h2{font-size:14px;font-weight:700;color:var(--color-text-primary)}
+.hdr-text p{font-size:11px;color:var(--color-text-secondary);margin-top:1px}
+
+/* legend */
+.leg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem}
+.li{display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--color-text-secondary)}
+.ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* detail bar */
+.dbar{margin-top:1rem;background:var(--color-background-secondary);border-radius:10px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;min-height:52px}
+.ddot{width:11px;height:11px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.dtitle{font-size:13px;font-weight:700;color:var(--color-text-primary)}
+.ddesc{font-size:11px;color:var(--color-text-secondary);margin-top:2px;line-height:1.5}
+</style>
+
+<div class="wrap">
+<div class="hdr">
+  <div class="nfbadge"><span>NETFLIX</span></div>
+  <div class="hdr-text">
+    <h2>DevSecOps Pipeline — Security-First Architecture</h2>
+    <p>Step-by-step algorithm · Click any block to inspect · React + NodeJS Netflix Clone</p>
+  </div>
+</div>
+<div class="leg">
+  <div class="li"><div class="ld" style="background:#1864AB"></div>Source &amp; CI</div>
+  <div class="li"><div class="ld" style="background:#6741D9"></div>Security scan</div>
+  <div class="li"><div class="ld" style="background:#C92A2A"></div>Security gate</div>
+  <div class="li"><div class="ld" style="background:#2B8A3E"></div>Build &amp; image</div>
+  <div class="li"><div class="ld" style="background:#D9480F"></div>Deploy</div>
+  <div class="li"><div class="ld" style="background:#0B7285"></div>Monitor</div>
+</div>
+
+<svg viewBox="0 0 700 1540" width="100%" role="img">
+<title>Netflix DevSecOps Pipeline Algorithm</title>
+<desc>Vertical flowchart showing the full DevSecOps pipeline from Developers through GitHub, Jenkins, security scans, gates, Docker, Trivy, signing, Nexus, Kubernetes and monitoring.</desc>
+
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+    <path d="M1 2L8 5L1 8" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  </marker>
+  <marker id="arr-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+    <path d="M1 2L8 5L1 8" fill="none" stroke="#E50914" stroke-width="2" stroke-linecap="round"/>
+  </marker>
+  <marker id="arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+    <path d="M1 2L8 5L1 8" fill="none" stroke="#2B8A3E" stroke-width="2" stroke-linecap="round"/>
+  </marker>
+</defs>
+
+<!-- ══════════════════════════════════════════
+     VERTICAL LAYOUT — all blocks centred at x=350
+     Block width=500 (x=100..600), height=70
+     Gap between blocks = 28px
+     Connector lines centre x=350
+
+     Block tops:
+     1  Developers      y=20
+     2  GitHub          y=138
+     3  Jenkins         y=256
+     4a SonarQube       y=374  x=100 w=145
+     4b OWASP           y=374  x=278 w=145
+     4c Secret Scan     y=374  x=456 w=145
+     5  Security Gate   y=514
+     6  Docker Build    y=650
+     7  Trivy Scan      y=768
+     8  Image Signing   y=886
+     9  Nexus           y=1004
+     10 Kubernetes      y=1122
+     11 K8s Security    y=1240
+     12 Monitoring      y=1390
+     ══════════════════════════════════════════ -->
+
+<!-- ─── BLOCK 1: DEVELOPERS ─── -->
+<g style="cursor:pointer" onclick="show(0)">
+  <rect x="100" y="20" width="500" height="78" rx="12" fill="#EFF6FF" stroke="#1864AB" stroke-width="2"/>
+  <!-- left accent bar -->
+  <rect x="100" y="20" width="8" height="78" rx="4" fill="#1864AB"/>
+  <!-- step pill -->
+  <rect x="116" y="34" width="40" height="20" rx="10" fill="#1864AB"/>
+  <text x="136" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">01</text>
+  <!-- icon circle -->
+  <circle cx="174" cy="59" r="16" fill="#DBEAFE"/>
+  <text x="174" y="65" text-anchor="middle" font-size="16" font-family="sans-serif">👨‍💻</text>
+  <!-- title -->
+  <text x="202" y="51" font-size="14" font-weight="800" fill="#1E3A5F" font-family="sans-serif">Developers</text>
+  <text x="202" y="68" font-size="11" fill="#3B82F6" font-family="sans-serif">React · NodeJS · Netflix Clone Application</text>
+  <!-- right tag -->
+  <rect x="520" y="32" width="72" height="20" rx="6" fill="#DBEAFE"/>
+  <text x="556" y="46" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1864AB" font-family="sans-serif">SOURCE</text>
+</g>
+
+<!-- connector 1→2 -->
+<line x1="350" y1="98" x2="350" y2="132" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+<rect x="320" y="105" width="60" height="18" rx="6" fill="#F1F5F9"/>
+<text x="350" y="118" text-anchor="middle" font-size="9" fill="#64748B" font-family="sans-serif">git push</text>
+
+<!-- ─── BLOCK 2: GITHUB ─── -->
+<g style="cursor:pointer" onclick="show(1)">
+  <rect x="100" y="138" width="500" height="78" rx="12" fill="#EFF6FF" stroke="#1864AB" stroke-width="2"/>
+  <rect x="100" y="138" width="8" height="78" rx="4" fill="#1864AB"/>
+  <rect x="116" y="152" width="40" height="20" rx="10" fill="#1864AB"/>
+  <text x="136" y="166" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">02</text>
+  <circle cx="174" cy="177" r="16" fill="#DBEAFE"/>
+  <text x="174" y="183" text-anchor="middle" font-size="15" font-family="sans-serif">🐙</text>
+  <text x="202" y="169" font-size="14" font-weight="800" fill="#1E3A5F" font-family="sans-serif">GitHub Repository</text>
+  <text x="202" y="186" font-size="11" fill="#3B82F6" font-family="sans-serif">Source Code · Branch Protection · PR Reviews · Webhooks</text>
+  <rect x="520" y="150" width="72" height="20" rx="6" fill="#DBEAFE"/>
+  <text x="556" y="164" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1864AB" font-family="sans-serif">SCM</text>
+</g>
+
+<!-- connector 2→3 -->
+<line x1="350" y1="216" x2="350" y2="250" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+<rect x="310" y="224" width="80" height="18" rx="6" fill="#F1F5F9"/>
+<text x="350" y="237" text-anchor="middle" font-size="9" fill="#64748B" font-family="sans-serif">webhook trigger</text>
+
+<!-- ─── BLOCK 3: JENKINS ─── -->
+<g style="cursor:pointer" onclick="show(2)">
+  <rect x="100" y="256" width="500" height="78" rx="12" fill="#FEF9EC" stroke="#E67700" stroke-width="2"/>
+  <rect x="100" y="256" width="8" height="78" rx="4" fill="#E67700"/>
+  <rect x="116" y="270" width="40" height="20" rx="10" fill="#E67700"/>
+  <text x="136" y="284" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">03</text>
+  <circle cx="174" cy="295" r="16" fill="#FFF3CD"/>
+  <text x="174" y="301" text-anchor="middle" font-size="15" font-family="sans-serif">⚙️</text>
+  <text x="202" y="287" font-size="14" font-weight="800" fill="#7D4E00" font-family="sans-serif">Jenkins Pipeline</text>
+  <text x="202" y="304" font-size="11" fill="#E67700" font-family="sans-serif">CI/CD Orchestration · Jenkinsfile · Parallel Stage Execution</text>
+  <rect x="500" y="268" width="92" height="20" rx="6" fill="#FFF3CD"/>
+  <text x="546" y="282" text-anchor="middle" font-size="9.5" font-weight="700" fill="#E67700" font-family="sans-serif">ORCHESTRATOR</text>
+</g>
+
+<!-- connector 3 → 3 scan boxes (fork) -->
+<line x1="350" y1="334" x2="350" y2="362" stroke="#94A3B8" stroke-width="2" marker-end="url(#arr)"/>
+<!-- horizontal fork line -->
+<line x1="172" y1="362" x2="528" y2="362" stroke="#94A3B8" stroke-width="1.5"/>
+<!-- down to SonarQube -->
+<line x1="172" y1="362" x2="172" y2="374" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arr)"/>
+<!-- down to OWASP -->
+<line x1="350" y1="362" x2="350" y2="374" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arr)"/>
+<!-- down to Secret Scan -->
+<line x1="528" y1="362" x2="528" y2="374" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arr)"/>
+<!-- parallel badge -->
+<rect x="298" y="341" width="104" height="16" rx="6" fill="#F3F0FF"/>
+<text x="350" y="353" text-anchor="middle" font-size="9" fill="#6741D9" font-family="sans-serif">parallel security scans</text>
+
+<!-- ─── BLOCK 4a: SONARQUBE ─── -->
+<g style="cursor:pointer" onclick="show(3)">
+  <rect x="102" y="374" width="148" height="120" rx="12" fill="#F3F0FF" stroke="#6741D9" stroke-width="2"/>
+  <rect x="102" y="374" width="8" height="120" rx="4" fill="#6741D9"/>
+  <rect x="116" y="384" width="40" height="18" rx="9" fill="#6741D9"/>
+  <text x="136" y="397" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="sans-serif">04a</text>
+  <circle cx="176" cy="415" r="14" fill="#EDE9FE"/>
+  <text x="176" y="421" text-anchor="middle" font-size="13" font-family="sans-serif">🔎</text>
+  <text x="176" y="444" text-anchor="middle" font-size="12" font-weight="800" fill="#5F3DC4" font-family="sans-serif">SonarQube</text>
+  <text x="176" y="460" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">SAST Scan</text>
+  <text x="176" y="476" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">Code Quality</text>
+  <!-- small tag -->
+  <rect x="116" y="480" width="52" height="14" rx="5" fill="#EDE9FE"/>
+  <text x="142" y="491" text-anchor="middle" font-size="8" fill="#6741D9" font-family="sans-serif">SAST</text>
+</g>
+
+<!-- ─── BLOCK 4b: OWASP ─── -->
+<g style="cursor:pointer" onclick="show(4)">
+  <rect x="278" y="374" width="148" height="120" rx="12" fill="#F3F0FF" stroke="#6741D9" stroke-width="2"/>
+  <rect x="278" y="374" width="8" height="120" rx="4" fill="#6741D9"/>
+  <rect x="292" y="384" width="40" height="18" rx="9" fill="#6741D9"/>
+  <text x="312" y="397" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="sans-serif">04b</text>
+  <circle cx="352" cy="415" r="14" fill="#EDE9FE"/>
+  <text x="352" y="421" text-anchor="middle" font-size="13" font-family="sans-serif">🛡️</text>
+  <text x="352" y="444" text-anchor="middle" font-size="12" font-weight="800" fill="#5F3DC4" font-family="sans-serif">OWASP DC</text>
+  <text x="352" y="460" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">Dependency</text>
+  <text x="352" y="476" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">Check (SCA)</text>
+  <rect x="292" y="480" width="52" height="14" rx="5" fill="#EDE9FE"/>
+  <text x="318" y="491" text-anchor="middle" font-size="8" fill="#6741D9" font-family="sans-serif">SCA</text>
+</g>
+
+<!-- ─── BLOCK 4c: SECRET SCAN ─── -->
+<g style="cursor:pointer" onclick="show(5)">
+  <rect x="456" y="374" width="148" height="120" rx="12" fill="#F3F0FF" stroke="#6741D9" stroke-width="2"/>
+  <rect x="456" y="374" width="8" height="120" rx="4" fill="#6741D9"/>
+  <rect x="470" y="384" width="40" height="18" rx="9" fill="#6741D9"/>
+  <text x="490" y="397" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="sans-serif">04c</text>
+  <circle cx="530" cy="415" r="14" fill="#EDE9FE"/>
+  <text x="530" y="421" text-anchor="middle" font-size="13" font-family="sans-serif">🔑</text>
+  <text x="530" y="444" text-anchor="middle" font-size="12" font-weight="800" fill="#5F3DC4" font-family="sans-serif">GitLeaks</text>
+  <text x="530" y="460" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">Secret Scanning</text>
+  <text x="530" y="476" text-anchor="middle" font-size="9.5" fill="#7048E8" font-family="sans-serif">Credential Leak</text>
+  <rect x="470" y="480" width="52" height="14" rx="5" fill="#EDE9FE"/>
+  <text x="496" y="491" text-anchor="middle" font-size="8" fill="#6741D9" font-family="sans-serif">SECRETS</text>
+</g>
+
+<!-- converge lines from 3 scans → gate -->
+<line x1="172" y1="494" x2="172" y2="506" stroke="#94A3B8" stroke-width="1.5"/>
+<line x1="350" y1="494" x2="350" y2="506" stroke="#94A3B8" stroke-width="1.5"/>
+<line x1="528" y1="494" x2="528" y2="506" stroke="#94A3B8" stroke-width="1.5"/>
+<line x1="172" y1="506" x2="528" y2="506" stroke="#94A3B8" stroke-width="1.5"/>
+<line x1="350" y1="506" x2="350" y2="514" stroke="#94A3B8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- ─── BLOCK 5: SECURITY GATE ─── -->
+<g style="cursor:pointer" onclick="show(6)">
+  <!-- outer glow ring -->
+  <rect x="95" y="514" width="510" height="106" rx="14" fill="#FFF0F0" stroke="#C92A2A" stroke-width="0" opacity=".4"/>
+  <rect x="100" y="514" width="500" height="100" rx="12" fill="#FFF5F5" stroke="#C92A2A" stroke-width="2.5"/>
+  <rect x="100" y="514" width="8" height="100" rx="4" fill="#C92A2A"/>
+  <rect x="116" y="524" width="40" height="20" rx="10" fill="#C92A2A"/>
+  <text x="136" y="538" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">05</text>
+  <!-- lock icon ring -->
+  <circle cx="174" cy="564" r="20" fill="#FFE3E3"/>
+  <text x="174" y="571" text-anchor="middle" font-size="18" font-family="sans-serif">🔒</text>
+  <!-- title -->
+  <text x="205" y="533" font-size="13" font-weight="800" fill="#A51111" font-family="sans-serif">Pre-Production Security Gate</text>
+  <!-- checklist items -->
+  <text x="210" y="551" font-size="10.5" fill="#2B8A3E" font-family="sans-serif">✔ Sonar Quality Gate Passed</text>
+  <text x="210" y="566" font-size="10.5" fill="#2B8A3E" font-family="sans-serif">✔ No Critical CVEs Found</text>
+  <text x="390" y="551" font-size="10.5" fill="#2B8A3E" font-family="sans-serif">✔ No Secrets Detected</text>
+  <text x="390" y="566" font-size="10.5" fill="#2B8A3E" font-family="sans-serif">✔ OWASP Risk Threshold Met</text>
+  <!-- PASS/FAIL badges -->
+  <rect x="210" y="578" width="70" height="22" rx="8" fill="#D3F9D8"/>
+  <text x="245" y="593" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1B5E20" font-family="sans-serif">PASS ✅</text>
+  <rect x="295" y="578" width="70" height="22" rx="8" fill="#FFE3E3"/>
+  <text x="330" y="593" text-anchor="middle" font-size="10.5" font-weight="700" fill="#A51111" font-family="sans-serif">FAIL ❌</text>
+  <!-- tag -->
+  <rect x="502" y="524" width="90" height="20" rx="6" fill="#FFE3E3"/>
+  <text x="547" y="538" text-anchor="middle" font-size="9.5" font-weight="700" fill="#C92A2A" font-family="sans-serif">GATE</text>
+</g>
+
+<!-- FAIL arrow (right side) -->
+<path d="M600 564 Q660 564 660 420 Q660 334 600 334" fill="none" stroke="#E50914" stroke-width="1.5" stroke-dasharray="6 3" marker-end="url(#arr-r)"/>
+<rect x="648" y="436" width="44" height="36" rx="6" fill="#FFF0F0"/>
+<text x="670" y="450" text-anchor="middle" font-size="9" fill="#C92A2A" font-family="sans-serif">FAIL</text>
+<text x="670" y="464" text-anchor="middle" font-size="9" fill="#C92A2A" font-family="sans-serif">→ fix</text>
+
+<!-- connector 5→6 (PASS path) -->
+<line x1="350" y1="614" x2="350" y2="644" stroke="#2B8A3E" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr-g)"/>
+<rect x="316" y="622" width="68" height="16" rx="6" fill="#D3F9D8"/>
+<text x="350" y="634" text-anchor="middle" font-size="9" fill="#2B8A3E" font-family="sans-serif">PASS — proceed</text>
+
+<!-- ─── BLOCK 6: DOCKER BUILD ─── -->
+<g style="cursor:pointer" onclick="show(7)">
+  <rect x="100" y="650" width="500" height="78" rx="12" fill="#EBFBEE" stroke="#2B8A3E" stroke-width="2"/>
+  <rect x="100" y="650" width="8" height="78" rx="4" fill="#2B8A3E"/>
+  <rect x="116" y="664" width="40" height="20" rx="10" fill="#2B8A3E"/>
+  <text x="136" y="678" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">06</text>
+  <circle cx="174" cy="689" r="16" fill="#C3FAD8"/>
+  <text x="174" y="695" text-anchor="middle" font-size="15" font-family="sans-serif">🐳</text>
+  <text x="202" y="681" font-size="14" font-weight="800" fill="#1B5E20" font-family="sans-serif">Docker Build Stage</text>
+  <text x="202" y="698" font-size="11" fill="#2B8A3E" font-family="sans-serif">Multi-stage Dockerfile · Distroless Base · Netflix Clone Container</text>
+  <rect x="502" y="662" width="90" height="20" rx="6" fill="#C3FAD8"/>
+  <text x="547" y="676" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2B8A3E" font-family="sans-serif">BUILD</text>
+</g>
+
+<!-- connector 6→7 -->
+<line x1="350" y1="728" x2="350" y2="762" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+
+<!-- ─── BLOCK 7: TRIVY IMAGE SCAN ─── -->
+<g style="cursor:pointer" onclick="show(8)">
+  <rect x="100" y="768" width="500" height="78" rx="12" fill="#F3F0FF" stroke="#6741D9" stroke-width="2"/>
+  <rect x="100" y="768" width="8" height="78" rx="4" fill="#6741D9"/>
+  <rect x="116" y="782" width="40" height="20" rx="10" fill="#6741D9"/>
+  <text x="136" y="796" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">07</text>
+  <circle cx="174" cy="807" r="16" fill="#EDE9FE"/>
+  <text x="174" y="813" text-anchor="middle" font-size="15" font-family="sans-serif">🔍</text>
+  <text x="202" y="799" font-size="14" font-weight="800" fill="#5F3DC4" font-family="sans-serif">Trivy Image Scan</text>
+  <text x="202" y="816" font-size="11" fill="#7048E8" font-family="sans-serif">Container Vulnerability Analysis · OS Packages · App Layers</text>
+  <rect x="502" y="780" width="90" height="20" rx="6" fill="#EDE9FE"/>
+  <text x="547" y="794" text-anchor="middle" font-size="9.5" font-weight="700" fill="#6741D9" font-family="sans-serif">IMAGE SCAN</text>
+</g>
+
+<!-- connector 7→8 -->
+<line x1="350" y1="846" x2="350" y2="880" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+
+<!-- ─── BLOCK 8: IMAGE SIGNING ─── -->
+<g style="cursor:pointer" onclick="show(9)">
+  <rect x="100" y="886" width="500" height="78" rx="12" fill="#FFF5F5" stroke="#C92A2A" stroke-width="2"/>
+  <rect x="100" y="886" width="8" height="78" rx="4" fill="#C92A2A"/>
+  <rect x="116" y="900" width="40" height="20" rx="10" fill="#C92A2A"/>
+  <text x="136" y="914" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">08</text>
+  <circle cx="174" cy="925" r="16" fill="#FFE3E3"/>
+  <text x="174" y="931" text-anchor="middle" font-size="15" font-family="sans-serif">🔐</text>
+  <text x="202" y="917" font-size="14" font-weight="800" fill="#A51111" font-family="sans-serif">Image Signing</text>
+  <text x="202" y="934" font-size="11" fill="#C92A2A" font-family="sans-serif">Cosign Digital Signature · Supply Chain Integrity · SBOM</text>
+  <rect x="502" y="898" width="90" height="20" rx="6" fill="#FFE3E3"/>
+  <text x="547" y="912" text-anchor="middle" font-size="9.5" font-weight="700" fill="#C92A2A" font-family="sans-serif">SIGN</text>
+</g>
+
+<!-- connector 8→9 -->
+<line x1="350" y1="964" x2="350" y2="998" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+
+<!-- ─── BLOCK 9: NEXUS ─── -->
+<g style="cursor:pointer" onclick="show(10)">
+  <rect x="100" y="1004" width="500" height="78" rx="12" fill="#FFF9EC" stroke="#E67700" stroke-width="2"/>
+  <rect x="100" y="1004" width="8" height="78" rx="4" fill="#E67700"/>
+  <rect x="116" y="1018" width="40" height="20" rx="10" fill="#E67700"/>
+  <text x="136" y="1032" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">09</text>
+  <circle cx="174" cy="1043" r="16" fill="#FFF3CD"/>
+  <text x="174" y="1049" text-anchor="middle" font-size="15" font-family="sans-serif">📦</text>
+  <text x="202" y="1035" font-size="14" font-weight="800" fill="#7D4E00" font-family="sans-serif">Nexus Artifact Repository</text>
+  <text x="202" y="1052" font-size="11" fill="#E67700" font-family="sans-serif">Secure Storage of Approved Images · Versioned Artefacts</text>
+  <rect x="502" y="1016" width="90" height="20" rx="6" fill="#FFF3CD"/>
+  <text x="547" y="1030" text-anchor="middle" font-size="9.5" font-weight="700" fill="#E67700" font-family="sans-serif">REGISTRY</text>
+</g>
+
+<!-- connector 9→10 -->
+<line x1="350" y1="1082" x2="350" y2="1116" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+
+<!-- ─── BLOCK 10: KUBERNETES ─── -->
+<g style="cursor:pointer" onclick="show(11)">
+  <rect x="100" y="1122" width="500" height="78" rx="12" fill="#E8F4FD" stroke="#1864AB" stroke-width="2"/>
+  <rect x="100" y="1122" width="8" height="78" rx="4" fill="#326CE5"/>
+  <rect x="116" y="1136" width="40" height="20" rx="10" fill="#326CE5"/>
+  <text x="136" y="1150" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">10</text>
+  <circle cx="174" cy="1161" r="16" fill="#C8E6FA"/>
+  <text x="174" y="1167" text-anchor="middle" font-size="15" font-family="sans-serif">☸️</text>
+  <text x="202" y="1153" font-size="14" font-weight="800" fill="#1E3A5F" font-family="sans-serif">Kubernetes Cluster</text>
+  <text x="202" y="1170" font-size="11" fill="#326CE5" font-family="sans-serif">Production Deployment · Helm · ArgoCD · EKS · Blue/Green</text>
+  <rect x="502" y="1134" width="90" height="20" rx="6" fill="#C8E6FA"/>
+  <text x="547" y="1148" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1864AB" font-family="sans-serif">DEPLOY</text>
+</g>
+
+<!-- connector 10→11 -->
+<line x1="350" y1="1200" x2="350" y2="1234" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+
+<!-- ─── BLOCK 11: K8s SECURITY ─── -->
+<g style="cursor:pointer" onclick="show(12)">
+  <rect x="100" y="1240" width="500" height="110" rx="12" fill="#FFF5F5" stroke="#C92A2A" stroke-width="2"/>
+  <rect x="100" y="1240" width="8" height="110" rx="4" fill="#C92A2A"/>
+  <rect x="116" y="1250" width="40" height="20" rx="10" fill="#C92A2A"/>
+  <text x="136" y="1264" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">11</text>
+  <circle cx="174" cy="1278" r="16" fill="#FFE3E3"/>
+  <text x="174" y="1284" text-anchor="middle" font-size="15" font-family="sans-serif">🛡️</text>
+  <text x="205" y="1260" font-size="13" font-weight="800" fill="#A51111" font-family="sans-serif">Kubernetes Security Layer</text>
+  <!-- 4 policy badges -->
+  <rect x="208" y="1270" width="110" height="26" rx="8" fill="#FFE3E3"/>
+  <text x="263" y="1287" text-anchor="middle" font-size="10" font-weight="700" fill="#A51111" font-family="sans-serif">Kyverno Policies</text>
+  <rect x="328" y="1270" width="110" height="26" rx="8" fill="#FFE3E3"/>
+  <text x="383" y="1287" text-anchor="middle" font-size="10" font-weight="700" fill="#A51111" font-family="sans-serif">OPA Gatekeeper</text>
+  <rect x="448" y="1270" width="110" height="26" rx="8" fill="#FFE3E3"/>
+  <text x="503" y="1287" text-anchor="middle" font-size="10" font-weight="700" fill="#A51111" font-family="sans-serif">Network Policies</text>
+  <rect x="208" y="1304" width="160" height="26" rx="8" fill="#FFE3E3"/>
+  <text x="288" y="1321" text-anchor="middle" font-size="10" font-weight="700" fill="#A51111" font-family="sans-serif">Pod Security Standards</text>
+  <rect x="376" y="1304" width="160" height="26" rx="8" fill="#FFE3E3"/>
+  <text x="456" y="1321" text-anchor="middle" font-size="10" font-weight="700" fill="#A51111" font-family="sans-serif">RBAC + Admission Ctrl</text>
+</g>
+
+<!-- connector 11→12 -->
+<line x1="350" y1="1350" x2="350" y2="1384" stroke="#94A3B8" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+
+<!-- ─── BLOCK 12: MONITORING ─── -->
+<g style="cursor:pointer" onclick="show(13)">
+  <rect x="100" y="1390" width="500" height="128" rx="12" fill="#E3FAFC" stroke="#0B7285" stroke-width="2"/>
+  <rect x="100" y="1390" width="8" height="128" rx="4" fill="#0B7285"/>
+  <rect x="116" y="1400" width="40" height="20" rx="10" fill="#0B7285"/>
+  <text x="136" y="1414" text-anchor="middle" font-size="10" font-weight="700" fill="#fff" font-family="sans-serif">12</text>
+  <circle cx="174" cy="1435" r="16" fill="#C5F6FA"/>
+  <text x="174" y="1441" text-anchor="middle" font-size="15" font-family="sans-serif">📊</text>
+  <text x="205" y="1412" font-size="13" font-weight="800" fill="#0B6E7A" font-family="sans-serif">Monitoring &amp; Alerting</text>
+  <!-- 4 tool rows -->
+  <rect x="208" y="1420" width="270" height="24" rx="7" fill="#C5F6FA"/>
+  <text x="220" y="1436" font-size="10.5" font-weight="700" fill="#0B6E7A" font-family="sans-serif">Prometheus</text>
+  <text x="295" y="1436" font-size="10" fill="#0B7285" font-family="sans-serif">→ Metrics Collection</text>
+  <rect x="208" y="1450" width="270" height="24" rx="7" fill="#C5F6FA"/>
+  <text x="220" y="1466" font-size="10.5" font-weight="700" fill="#0B6E7A" font-family="sans-serif">Grafana</text>
+  <text x="270" y="1466" font-size="10" fill="#0B7285" font-family="sans-serif">→ Dashboards &amp; SLO Boards</text>
+  <rect x="208" y="1480" width="270" height="24" rx="7" fill="#C5F6FA"/>
+  <text x="220" y="1496" font-size="10.5" font-weight="700" fill="#0B6E7A" font-family="sans-serif">Loki</text>
+  <text x="250" y="1496" font-size="10" fill="#0B7285" font-family="sans-serif">→ Log Aggregation</text>
+  <rect x="490" y="1420" width="100" height="84" rx="8" fill="#C5F6FA"/>
+  <text x="540" y="1447" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0B6E7A" font-family="sans-serif">Alert</text>
+  <text x="540" y="1462" text-anchor="middle" font-size="10" fill="#0B7285" font-family="sans-serif">Manager</text>
+  <text x="540" y="1478" text-anchor="middle" font-size="9.5" fill="#0B7285" font-family="sans-serif">Slack · Email</text>
+  <text x="540" y="1493" text-anchor="middle" font-size="9.5" fill="#0B7285" font-family="sans-serif">PagerDuty</text>
+  <rect x="502" y="1398" width="90" height="20" rx="6" fill="#C5F6FA"/>
+  <text x="547" y="1412" text-anchor="middle" font-size="9.5" font-weight="700" fill="#0B7285" font-family="sans-serif">OBSERVE</text>
+</g>
+
+</svg>
+
+<div class="dbar" id="dbar">
+  <div class="ddot" id="ddot" style="background:#aaa"></div>
+  <div><div class="dtitle" id="dtitle">Click any block to inspect it</div><div class="ddesc" id="ddesc">Detailed role, tools and security purpose shown here</div></div>
+</div>
+</div>
+
+<script>
+const D=[
+  {c:"#1864AB",t:"01 — Developers",d:"React frontend + NodeJS backend form the Netflix clone. Developers write code locally, open Pull Requests on feature branches. All commits require GPG signing. Branch protection blocks direct pushes to main."},
+  {c:"#1864AB",t:"02 — GitHub Repository",d:"Central source of truth. Branch protection rules enforce 2-reviewer PRs. Webhooks fire Jenkins on every push or merge. .gitignore + git-secrets prevent accidental credential commits."},
+  {c:"#E67700",t:"03 — Jenkins Pipeline",d:"Declarative Jenkinsfile orchestrates all stages. Parallel stage blocks run security scans simultaneously. Credentials stored in Jenkins Credentials Store — never in code. Blue Ocean UI for pipeline visibility."},
+  {c:"#6741D9",t:"04a — SonarQube SAST",d:"Static Application Security Testing analyses source code for SQL injection, XSS, code smells, and technical debt. Pipeline hard-fails if Quality Gate is not GREEN. SARIF report uploaded to GitHub Security tab."},
+  {c:"#6741D9",t:"04b — OWASP Dependency Check",d:"SCA scans all npm and Maven libraries against NVD CVE database. Generates CycloneDX SBOM every build. Pipeline fails on any CVSS ≥ 7.0 (High or Critical) finding. Suppression file required for documented false positives."},
+  {c:"#6741D9",t:"04c — GitLeaks Secret Scanning",d:"Scans entire git history and current diff for API keys, tokens, passwords, AWS credentials and private keys. Zero-tolerance policy — any secret found fails the build immediately with the offending commit flagged."},
+  {c:"#C92A2A",t:"05 — Pre-Production Security Gate",d:"Central decision point aggregating all scan results. ALL four conditions must be true: Sonar Quality Gate GREEN, zero Critical CVEs, zero secrets detected, OWASP risk threshold met. Any failure triggers auto-Jira ticket + Slack #security-alerts notification and loops back to Jenkins for fix."},
+  {c:"#2B8A3E",t:"06 — Docker Build Stage",d:"Multi-stage Dockerfile builds the app in a build container and copies only the production artefact to a minimal distroless base image. BuildKit cache speeds repeated builds. .dockerignore prevents dev files and .env from entering the image."},
+  {c:"#6741D9",t:"07 — Trivy Image Scan",d:"Trivy scans the final Docker image for OS package CVEs, app-layer vulnerabilities, exposed secrets and misconfigurations. Fails on CRITICAL severity. Uses --ignore-unfixed to filter unpatched vulns. JSON report saved as build artefact."},
+  {c:"#C92A2A",t:"08 — Image Signing (Cosign)",d:"Cosign signs the image digest using keyless OIDC signing via Jenkins OIDC token. Signature stored in OCI registry alongside the image. Kubernetes admission webhook (Kyverno) rejects any unsigned image at deploy time."},
+  {c:"#E67700",t:"09 — Nexus Artifact Repository",d:"Private artefact store holds approved Docker images, Maven JARs and npm packages. Immutable image tags (SHA256 digest) prevent tag mutation. IAM least-privilege restricts push to CI service account only. 90-day retention policy auto-cleans old images."},
+  {c:"#326CE5",t:"10 — Kubernetes Cluster",d:"EKS (or self-hosted K8s) runs the Netflix clone. Helm chart packages the app with environment-specific values. ArgoCD GitOps engine reconciles desired state from Git to cluster. Blue/Green and Canary rollout strategies with auto-rollback on error rate > 1% or p99 latency > 500ms."},
+  {c:"#C92A2A",t:"11 — Kubernetes Security Layer",d:"Multi-layer runtime security: Kyverno policies enforce image signing and registry allowlist. OPA Gatekeeper validates resource requests/limits. NetworkPolicies restrict pod-to-pod traffic to least-privilege. Pod Security Standards (Restricted profile) prevent privileged containers. RBAC limits who can exec into pods."},
+  {c:"#0B7285",t:"12 — Monitoring & Alerting",d:"Prometheus scrapes metrics every 15s. Grafana dashboards show SLOs, security posture (CVE counts, policy violations, auth failure rates). Loki aggregates all container and K8s audit logs. AlertManager routes P1 security incidents to PagerDuty and general alerts to Slack #devsecops-alerts."},
+];
+function show(i){
+  const n=D[i];
+  document.getElementById('ddot').style.background=n.c;
+  document.getElementById('dtitle').textContent=n.t;
+  document.getElementById('ddesc').textContent=n.d;
+}
+</script>
